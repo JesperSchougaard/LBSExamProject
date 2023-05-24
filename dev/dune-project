@@ -5,11 +5,11 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github jesperschougaard/LBSExamProject))
 
-(authors "Author Name")
+(authors "Jesper Schougaard & Olivér-Tamás")
 
-(maintainers "Maintainer Name")
+(maintainers "Jesper Schougaard & Olivér-Tamás")
 
 (license LICENSE)
 

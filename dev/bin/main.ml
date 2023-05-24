@@ -1,2 +1,11 @@
-let () = Printf.printf "\n Okiedookie \n" in
-  let () = print_endline "Hello, World!" in ()
+
+
+module P = Parser
+module T = Typing
+
+let () = Printf.printf "\n Okiedookie \n" ;;
+
+P.parserhello;
+T.typinghello
+
+
