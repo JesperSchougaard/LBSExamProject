@@ -1,0 +1,5 @@
+#Ignore build
+dev/_build/*
+
+#Add other if needed
+.devcontainer/devcontainer.json
