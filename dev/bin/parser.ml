@@ -7,7 +7,7 @@ exception NotImplemented
 
 (* Define types needed  *)
 
-type val =
+type value =
     Int of int
   | Bool of bool
 
@@ -17,7 +17,7 @@ type operator =
   | Mult
 
 type expression = 
-  | ValExp of val (* value *)
+  | ValExp of value (* value *)
   | OpExp of {l: expression; op: operator; r: expression} (* operator *)
   | SeqExp of expression list (* sequence *)
   | LockExp of {label: string; body: expression} (* lock *)
@@ -27,7 +27,7 @@ type expression =
   | LetExp of {var_name: string; var_exp: expression; body_exp: expression} (* let *)
 
 type parse_tree =
-| ValueNode of val
+| ValueNode of value
 | OperatorNode of {left: parse_tree; operator: operator; right: parse_tree}
 | SequenceNode of parse_tree list
 | LockNode of {label: string; body: parse_tree}
@@ -47,11 +47,11 @@ let parse_if (cond: expression) (then_exp: expression) (else_exp: expression) : 
   (* Construct appropriate parse tree node for if expression *)
   (* raise NotImplemented *)
 
-  let parse_let (var_name: string) (var_exp: expression) (body_exp: expression) : parse_tree =
-    let parsed_var_exp = parse_exp var_exp in
-    let parsed_body_exp = parse_exp body_exp in
-    (* Logic to handle let expression, Need assignment *)
-    raise NotImplemented  
+let parse_let (var_name: string) (var_exp: expression) (body_exp: expression) : parse_tree =
+  let parsed_var_exp = parse_exp var_exp in
+  let parsed_body_exp = parse_exp body_exp in
+  (* Logic to handle let expression, Need assignment *)
+  raise NotImplemented  
 
 
 
@@ -59,16 +59,15 @@ let parse_if (cond: expression) (then_exp: expression) (else_exp: expression) : 
 (* So, we move directly onto configuration *)
 
 type config =
-  { ct: ??? (* Class table *)
-  ; sigma: ??? (* Heap map locations -> value-type pair *)
-  ; m: ??? (* List of integrity labels, executing code *)
-  ; l: ??? (* List of integrity labels, dynamic *) }
+  { (* sigma: map  Heap map locations -> value-type pair *) (* Not needed currently *)
+    m: string list (* List of integrity labels, executing code *)
+  ; l: string list (* List of integrity labels, dynamic *) }
 
 
 (* Parsing takes an expression and a configuration, returning a parse-tree to give to the type checker *)
 (* Configuration gets modified throughout parsing, and so is not passed around *)
 let rec parse (expression: expression) (c: config) : parse_tree = 
-  let rec parse_exp (e: expression) : exp =
+  let rec parse_exp (e: expression) : expression =
     match e with
     | ValExp v -> ValueNode (parse_value v)
     | OpExp l op r -> raise NotImplemented
