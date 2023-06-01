@@ -26,9 +26,13 @@ let parse_if (cond: T.expression) (then_exp: T.expression) (else_exp: T.expressi
 let parse_let (var_name: string) (var_exp: T.expression) (body_exp: T.expression) : T.parse_tree =
   let parsed_var_exp = parse_exp var_exp in
   let parsed_body_exp = parse_exp body_exp in
-  (* Logic to handle let expression, Need assignment *)
-  raise NotImplemented  
 
+let rec parse_seq_exp expressions =
+  match expressions with
+  | [] -> () (* Base case: Empty sequence *)
+  | exp :: rest ->
+    let _ = parse_exp exp in (* Evaluate and process the current expression *)
+    parse_seq_exp rest (* Recursively process the remaining expressions in the sequence *)
 
 
 (* Rather than make statements, we essentially make due with expressions. *)
@@ -55,6 +59,7 @@ let rec parse (expression: T.expression) (c: config) : T.parse_tree =
     raise NotImplemented
     | IfExp {cond; then_exp; else_exp} -> parse_if cond then_exp else_exp
     | LetExp {var_name; var_exp; body_exp} -> parse_let var_name var_exp body_exp
+    | CallExp {func_exp; args}
   
   in parse_exp expression
 
