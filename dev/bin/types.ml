@@ -13,14 +13,14 @@ type operator =
 
 (* abstract syntax tree (AST) *)  
 type expression =
-  | ValExp of value (* value *)
-  | OpExp of {l: expression; op: operator; r: expression} (* operator *)
-  | SeqExp of expression list (* sequence *)
-  | LockExp of {label: string; body: expression} (* lock *)
-  | CallExp of { func_exp: expression; args: expression list } (* function call *)
-  | IfExp of {cond: expression; then_exp: expression; else_exp: expression} (* if *)
+  | Val_exp of value (* value *)
+  | Op_exp of {l: expression; op: operator; r: expression} (* operator *)
+  | Seq_exp of expression list (* sequence *)
+  | Lock_exp of {label: string; body: expression} (* lock *)
+  | Call_exp of { func_exp: expression; args: expression list } (* function call *)
+  | If_exp of {cond: expression; then_exp: expression; else_exp: expression} (* if *)
   (*| AssignExp of { var_name: string; assigned_exp: expression }*) (* assignment *) (* Is there any difference between assign and let? Func languages only allow consts*)
-  | LetExp of {var_name: string; var_exp : expression (IntValue 42); body_exp: expression} (* let *)
+  | Let_exp of {var_name: string; var_exp: expression; body_exp: expression} (* let *)
 
 (* intermediate representation *)
 type parse_tree =
@@ -30,7 +30,7 @@ type parse_tree =
 | Lock_node of {label: string; body: parse_tree}
 | If_node of {condition: parse_tree; then_branch: parse_tree; else_branch: parse_tree}
 | Let_node of {var_name: string; var_exp: parse_tree; body_exp: parse_tree}
-| Call_node of {func_exp: string; args: string list}
+| Call_node of {func_name: string; args: string list}
 
 
 
