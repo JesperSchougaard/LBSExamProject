@@ -50,20 +50,20 @@ type config =
 
 (* Parsing takes an expression and a configuration, returning a parse-tree to give to the type checker *)
 (* Configuration gets modified throughout parsing, and so is not passed around *)
-let rec parse (expression: T.expression) (c: config) : T.parse_tree = 
-  let rec parse_exp (e: T.expression) : T.expression =
+let rec parse (expression: T.exp) (c: config) : T.parse_tree = 
+  let rec parse_exp (e: T.exp) : T.exp =
     match e with
-    | ValExp v -> ValueNode("bad", parse_value v)
-    | OpExp l op r -> raise NotImplemented
-    | SeqExp exp_list -> raise NotImplemented
-    | LockExp {label; body} -> parse_lock label body
-    | IfExp {cond; then_exp; else_exp} -> parse_if cond then_exp else_exp
-    | LetExp {var_name; var_exp; body_exp} -> parse_let var_name var_exp body_exp
-    | CallExp {func_exp; args} -> T.Call_node func_exp args
+    | Val_exp v -> Value_node("bad", parse_value v)
+    | Op_exp {l; op; r} -> raise NotImplemented
+    | Seq_exp exp_list -> raise NotImplemented
+    | Lock_exp {label; body} -> parse_lock label body
+    | If_exp {cond; then_exp; else_exp} -> parse_if cond then_exp else_exp
+    | Let_exp {var_name; var_exp; body_exp} -> parse_let var_name var_exp body_exp
+    | Call_exp {func_name; args} -> (T.Call_node func_name args)
   
   in parse_exp expression
 
 
 (* random test function *)
-let parserhello = print_endline "\n parser says hello!"
+let parserhello() = print_endline "\n parser says hello!"
 
