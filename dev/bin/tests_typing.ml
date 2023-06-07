@@ -2,12 +2,20 @@
 
 module T = Types
 
+let labels_ttt : T.type_checker_labels =
+  {pc = T.Trusted; l_i = T.Trusted; l_o = T.Trusted};;
+
+let labels_utt : T.type_checker_labels =
+  {pc = T.Untrusted; l_i = T.Trusted; l_o = T.Trusted};;
+
 (* Minimal *)
-let int_test : T.parse_tree = T.Value_node(T.Int{int = 5});;
+let int_test : T.parse_tree = T.Value_node(T.Int{int = 5; label = T.Trusted});;
 
+let bool_test : T.parse_tree =
+  T.Value_node(T.Bool{bool = true; label = T.Trusted});;
 
-
-
+let plus_test : T.parse_tree =
+  T.Operator_node{left = int_test; op = T.Plus; right = int_test};;
 
 
 (* random test function *)
