@@ -1,0 +1,26 @@
+(lang dune 2.9)
+
+(name dev)
+
+(generate_opam_files true)
+
+(source
+ (github jesperschougaard/LBSExamProject))
+
+(authors "Jesper Schougaard & Oliv\195\169r-Tam\195\161s")
+
+(maintainers "Jesper Schougaard & Oliv\195\169r-Tam\195\161s")
+
+(license LICENSE)
+
+(documentation https://url/to/documentation)
+
+(package
+ (name dev)
+ (synopsis "A short synopsis")
+ (description "A longer description")
+ (depends ocaml dune)
+ (tags
+  (topics "to describe" your project)))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
