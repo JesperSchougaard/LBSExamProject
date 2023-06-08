@@ -55,7 +55,7 @@ let rec parse (expression: T.exp) (c: config) : T.parse_tree =
     | Lock_exp {label; body} -> parse_lock label body
     | If_exp {cond; then_exp; else_exp} -> parse_if cond then_exp else_exp
     | Let_exp {var_name; var_exp; body_exp} -> parse_let var_name var_exp body_exp
-    | Call_exp {func_name; args} -> (T.Call_node func_name args)
+    | Call_exp {func_name; args} -> (T.Call_node ( func_name args))
   
   in parse_exp expression
 

@@ -1,0 +1,22 @@
+(** @canonical Dune__exe.Main *)
+module Main = Dune__exe__Main
+
+
+(** @canonical Dune__exe.Parser *)
+module Parser = Dune__exe__Parser
+
+
+(** @canonical Dune__exe.Tests_parser *)
+module Tests_parser = Dune__exe__Tests_parser
+
+
+(** @canonical Dune__exe.Tests_typing *)
+module Tests_typing = Dune__exe__Tests_typing
+
+
+(** @canonical Dune__exe.Types *)
+module Types = Dune__exe__Types
+
+
+(** @canonical Dune__exe.Typing *)
+module Typing = Dune__exe__Typing

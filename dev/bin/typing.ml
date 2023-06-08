@@ -6,16 +6,16 @@ exception NotImplemented
 
 (* Helper functions *)
 
-let type_check_val(value: T.value) : T.typed_tree = match value with
-    | Int {int; label} -> ( (* No label requirement for values *)
-      Printf.printf "int value: %i \n" int;
-      T.Int_t{typ = {typ = Int; label}; int})
-    | Bool {bool; label} -> (
-      (* Bools are simple: Check that they are true/false, return bool^label *)
-      Printf.printf "bool and label value: %B, %s \n" bool (T.label_to_string(label));
-      T.Bool_t{typ = {typ = Bool; label}; bool})
-  
-let get_typ(tt: T.typed_tree) : T.tau =
+let type_check_val (value: T.value): T.typed_tree =
+  match value with
+  | Int {number; label} ->
+    Printf.printf "int value: %i \n" number;
+    T.Int_t {typ = {typ = Int; label}; int = number}
+  | Bool {b; label} ->
+    Printf.printf "bool and label value: %B, %s \n" b (T.label_to_string label);
+    T.Bool_t {typ = {typ = Bool; label}; bool = b}
+
+let get_typ (tt: T.typed_tree): T.tau =
   match tt with 
   | Int_t {typ; _} -> typ
   | Bool_t {typ; _} -> typ

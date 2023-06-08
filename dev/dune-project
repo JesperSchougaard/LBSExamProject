@@ -1,4 +1,4 @@
-(lang dune 3.7)
+(lang dune 2.9)
 
 (name dev)
 
@@ -7,9 +7,9 @@
 (source
  (github jesperschougaard/LBSExamProject))
 
-(authors "Jesper Schougaard & Olivér-Tamás")
+(authors "Jesper Schougaard & Oliv\195\169r-Tam\195\161s")
 
-(maintainers "Jesper Schougaard & Olivér-Tamás")
+(maintainers "Jesper Schougaard & Oliv\195\169r-Tam\195\161s")
 
 (license LICENSE)
 

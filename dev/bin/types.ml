@@ -12,8 +12,8 @@ let label_to_string(label) : string = match label with
   | Lock -> "Lock"
 
 type value =
-    Int of {label: string; number: int}
-  | Bool of {label: string; b: bool}
+    Int of {label: label; number: int}
+  | Bool of {label: label; b: bool}
 
 type operator =
     Plus
