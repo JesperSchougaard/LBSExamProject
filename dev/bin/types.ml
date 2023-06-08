@@ -2,9 +2,13 @@
 
 (* Parser related *)
 
+
+type label = Trusted | Untrusted
+
 type value =
-    Int of {label: string; number: int}
-  | Bool of {label: string; b: bool}
+  | Int of { label: label; number: int }
+  | Bool of { label: label; b: bool }
+
 
 type operator =
     Plus

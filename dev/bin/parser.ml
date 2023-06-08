@@ -1,8 +1,5 @@
 (* Main file for parsing *)
 
-
-(* Exceptions *)
-
 exception NotImplemented
 
 (* Define types needed  *)
@@ -13,7 +10,6 @@ let parse_value (v: T.value) : T.value =
   match v with
   | Int i -> Int i
   | Bool b -> Bool b
-
 
 let parse_if (cond: T.expression) (then_exp: T.expression) (else_exp: T.expression) : T.parse_tree =
   let parsed_cond = parse_exp cond in
